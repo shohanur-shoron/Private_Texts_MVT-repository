@@ -8,7 +8,7 @@ A secure, user-friendly Django application for sharing secret messages with pass
 ### Installation
 
 1. Clone the repository:
-`git clone [https://github.com/yourusername/secret-message-app.git`](https://github.com/ImMirzaShakil/Private_Texts_MVT.git)
+`git clone https://github.com/shohanur-shoron/Private_Texts_MVT-repository.git`
 
 2. Create and activate a virtual environment:
 
