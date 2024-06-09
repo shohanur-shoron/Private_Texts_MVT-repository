@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/message.css' %}">
+    <title>Send Secret Message</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="messageBox">
+            <div class="imagediv">
+                <img src="{% static 'images/message.png' %}" alt="">
+            </div>
+            <form action="{% url 'generateLink' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1>No one is watching!!!</h1>
+                <textarea type="text" name="message" id="message" placeholder="Write your message here..." required></textarea>
+                <div class="passDiv">
+                    <img id="showOrHide" data-show-src="{% static 'images/icons8-show-password-50.png' %}" data-hide-src="{% static 'images/icons8-closed-eye-50.png' %}" src="{% static 'images/icons8-closed-eye-50.png' %}" onclick="showPassword()" alt="">
+                    <input type="password" name="password" id="password" placeholder="Enter password" required>
+                </div>
+                <p id="passwordMessage"></p>
+                <p></p>
+                <select name="maxView" id="maxView">
+                    <option value="1">Select max view</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <div class="urlbox">
+                    <p>{{ link }}/msg/</p>
+                    <input type="text" name="url" id="url" placeholder="Enter URL">
+                </div>
+                <label for="isTime" class="timelabel"><input type="checkbox" name="isTime" id="isTime"> Add maximum message view time.</label>
+                <input type="number" name="time" id="time" placeholder="Enter time in second">
+                <input type="submit" value="Send">
+            </form>
+
+        </div>
+
+        {% if messages %}
+            <div class="message">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="{% static 'js/message.js' %}"></script>
+</body>
+</html>

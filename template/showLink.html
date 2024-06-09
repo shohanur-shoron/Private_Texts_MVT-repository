@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/message.css' %}">
+    <title>Secret Message Link</title>
+</head>
+<body>
+    <div class="container">
+        <div class="link">
+            <div class="copyBtn" data-info="Copy URL">
+                <img id="copyImage" onclick="copyTextToClipboard(`{{ url }}`)" data-copied-src="{% static 'images/icons8-tick-48.png' %}" src="{% static 'images/icons8-copy-64.png' %}" alt="">
+            </div>
+            <p>Your link: <a href="{{ url }}" target="_blank">{{ url }}</a></p>
+        </div>
+        
+    </div>
+
+    <script src="{% static 'js/message.js' %}"></script>
+</body>
+</html>
